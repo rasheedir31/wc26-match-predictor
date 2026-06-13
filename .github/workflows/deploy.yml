@@ -1,0 +1,30 @@
+name: Deploy
+
+# Deploys the app to Render after CI succeeds on main. Render pulls the freshly
+# built GHCR image (or builds from docker/app.Dockerfile, per the Render service
+# config) and serves the bundled snapshot. Only the app is ever deployed.
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+    branches: [main]
+
+jobs:
+  render-deploy:
+    runs-on: ubuntu-latest
+    # Only if CI passed.
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Trigger Render deploy
+        env:
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        # Set the RENDER_DEPLOY_HOOK repo secret to your Render service's deploy hook
+        # URL. The step is a no-op (skipped, not failed) until that secret exists.
+        run: |
+          if [ -z "$RENDER_DEPLOY_HOOK" ]; then
+            echo "RENDER_DEPLOY_HOOK not set - skipping deploy."
+            exit 0
+          fi
+          curl -fsSL -X POST "$RENDER_DEPLOY_HOOK"
+          echo "Render deploy triggered."

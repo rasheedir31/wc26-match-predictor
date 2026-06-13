@@ -1,0 +1,28 @@
+# Pre-commit hooks. Mirrors `make lint` so CI and local commits agree.
+# Install with `make setup` (runs `uv run pre-commit install`).
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^data/snapshot/
+      - id: end-of-file-fixer
+        exclude: ^data/snapshot/
+      - id: check-yaml
+      - id: check-toml
+      - id: check-added-large-files
+        args: ["--maxkb=1024"]
+        # The committed app snapshot (models + sqlite) is allowed to be larger.
+        exclude: ^data/snapshot/
+      - id: check-merge-conflict
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+        # Generated snapshot artifacts aren't hand-edited; don't reformat them.
+        exclude: ^data/snapshot/
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.9
+    hooks:
+      - id: ruff
+        args: ["--fix"]
+      - id: ruff-format

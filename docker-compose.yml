@@ -1,0 +1,67 @@
+# Full LOCAL stack (showcase only - none of this deploys; see the README guardrails).
+#   postgres  : the warehouse the ETL loads into
+#   mlflow    : experiment-tracking UI            -> http://localhost:5000
+#   airflow   : orchestration UI (standalone)     -> http://localhost:8080
+#   app       : the deployable FastAPI + Streamlit -> http://localhost:8501 (+ :8000)
+#
+# Only `app` (docker/app.Dockerfile) is ever deployed to Render. Postgres and Airflow
+# run here for the local demo and are never pushed to the host.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: wc26
+      POSTGRES_PASSWORD: wc26
+      POSTGRES_DB: wc26
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wc26"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mlflow:
+    image: python:3.12-slim
+    command: >
+      sh -c "pip install --no-cache-dir mlflow==3.13.0 &&
+             mlflow server --host 0.0.0.0 --port 5000
+             --backend-store-uri sqlite:////mlflow/mlflow.db
+             --default-artifact-root /mlflow/artifacts"
+    ports: ["5000:5000"]
+    volumes: ["mlflowdata:/mlflow"]
+
+  airflow:
+    build:
+      context: .
+      dockerfile: docker/airflow.Dockerfile
+    command: airflow standalone
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      PYTHONPATH: /opt/airflow/wc26/src
+      # Point wc26 tasks at the warehouse service.
+      POSTGRES_HOST: postgres
+    ports: ["8080:8080"]
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./src:/opt/airflow/wc26/src
+      - ./data:/opt/airflow/wc26/data
+
+  app:
+    build:
+      context: .
+      dockerfile: docker/app.Dockerfile
+    ports:
+      - "8501:8501"  # Streamlit dashboard
+      - "8000:8000"  # FastAPI API
+    environment:
+      PORT: "8501"
+
+volumes:
+  pgdata:
+  mlflowdata:

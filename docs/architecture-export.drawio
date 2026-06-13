@@ -1,0 +1,51 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="WC26 Architecture" id="wc26-arch-export">
+    <mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="560" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="TITLE" value="WC26 Match Predictor - Architecture" style="text;html=1;align=left;fontSize=16;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="15" width="500" height="30" as="geometry" /></mxCell>
+
+        <!-- ZONE A -->
+        <mxCell id="ZA" value="1 · DATA &amp; ML PIPELINE   (orchestrated by Airflow · scheduled in GitHub Actions)" style="rounded=1;dashed=1;html=1;fillColor=none;strokeColor=#6c8ebf;verticalAlign=top;fontStyle=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="40" y="55" width="900" height="255" as="geometry" /></mxCell>
+
+        <mxCell id="A1" value="martj42 results&#10;(CSV history)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef2f7;strokeColor=#999999;fontSize=10;" vertex="1" parent="1"><mxGeometry x="60" y="100" width="120" height="42" as="geometry" /></mxCell>
+        <mxCell id="A1b" value="FBref - scraped&#10;WC26 groups &amp; fixtures" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef2f7;strokeColor=#999999;fontSize=10;" vertex="1" parent="1"><mxGeometry x="60" y="152" width="120" height="44" as="geometry" /></mxCell>
+
+        <mxCell id="A2" value="Apache Airflow&#10;orchestration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#017CEE;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="220" y="118" width="120" height="48" as="geometry" /></mxCell>
+        <mxCell id="A3" value="Python&#10;ETL + features&#10;(Elo·form·rest·H2H)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3776AB;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="370" y="113" width="130" height="58" as="geometry" /></mxCell>
+        <mxCell id="A4" value="PostgreSQL&#10;warehouse" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#336791;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="530" y="118" width="120" height="48" as="geometry" /></mxCell>
+        <mxCell id="A5" value="MLflow&#10;experiment tracking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0194E2;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="690" y="118" width="130" height="48" as="geometry" /></mxCell>
+
+        <mxCell id="A6" value="Models&#10;Dixon-Coles · Elo · Logistic · XGBoost" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7931E;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="220" y="220" width="220" height="54" as="geometry" /></mxCell>
+        <mxCell id="A7" value="Monte Carlo&#10;10k sims → odds" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1"><mxGeometry x="470" y="223" width="130" height="48" as="geometry" /></mxCell>
+        <mxCell id="A8" value="Snapshot&#10;SQLite + model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1"><mxGeometry x="630" y="223" width="130" height="48" as="geometry" /></mxCell>
+
+        <!-- ZONE B -->
+        <mxCell id="ZB" value="2 · SERVING - fully containerized app (Docker · self-contained)" style="rounded=1;dashed=1;html=1;fillColor=none;strokeColor=#82b366;verticalAlign=top;fontStyle=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="40" y="335" width="450" height="195" as="geometry" /></mxCell>
+        <mxCell id="B3" value="Docker&#10;app image" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2496ED;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="80" y="405" width="120" height="50" as="geometry" /></mxCell>
+        <mxCell id="B4" value="FastAPI&#10;prediction API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#009688;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="300" y="375" width="130" height="46" as="geometry" /></mxCell>
+        <mxCell id="B5" value="Streamlit&#10;dashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF4B4B;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="300" y="440" width="130" height="46" as="geometry" /></mxCell>
+
+        <!-- ZONE C -->
+        <mxCell id="ZC" value="3 · CI/CD" style="rounded=1;dashed=1;html=1;fillColor=none;strokeColor=#999999;verticalAlign=top;fontStyle=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="510" y="335" width="430" height="195" as="geometry" /></mxCell>
+        <mxCell id="C1" value="GitHub Actions&#10;lint · test · build image" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2088FF;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="650" y="410" width="160" height="48" as="geometry" /></mxCell>
+
+        <!-- EDGES -->
+        <mxCell id="ea0" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="A1" target="A2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea0b" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="A1b" target="A2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="A2" target="A3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="A3" target="A4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="A4" target="A6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea5" value="logs runs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;dashed=1;fontSize=9;" edge="1" parent="1" source="A6" target="A5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="A6" target="A7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ea7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="A7" target="A8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="eb3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="B3" target="B4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="eb4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="B3" target="B5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ex1" value="bundled in image" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;dashed=1;fontSize=9;" edge="1" parent="1" source="A8" target="B3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ex2" value="builds image" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;dashed=1;fontSize=9;" edge="1" parent="1" source="C1" target="B3"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

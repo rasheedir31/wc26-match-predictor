@@ -1,0 +1,98 @@
+<mxGraphModel dx="1471" dy="803" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="700" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="TITLE" parent="1" style="text;html=1;align=left;fontSize=16;fontStyle=1;" value="WC26 Match Predictor Architecture" vertex="1">
+      <mxGeometry height="30" width="500" x="40" y="20" as="geometry" />
+    </mxCell>
+    <mxCell id="ZA" parent="1" style="rounded=1;dashed=1;html=1;fillColor=none;strokeColor=#6c8ebf;verticalAlign=top;fontStyle=1;fontSize=12;" value="1 - DATA &amp;amp; ML PIPELINE" vertex="1">
+      <mxGeometry height="290" width="830" x="40" y="60" as="geometry" />
+    </mxCell>
+    <mxCell id="A1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef2f7;strokeColor=#999999;fontSize=10;" value="martj42 results&#xa;(CSV history)" vertex="1">
+      <mxGeometry height="42" width="125" x="55" y="95" as="geometry" />
+    </mxCell>
+    <mxCell id="A1b" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef2f7;strokeColor=#999999;fontSize=10;" value="FBref - scraped&#xa;WC26 groups &amp; fixtures" vertex="1">
+      <mxGeometry height="46" width="125" x="55" y="150" as="geometry" />
+    </mxCell>
+    <mxCell id="A2" parent="1" style="shape=image;html=1;verticalLabelPosition=bottom;labelPosition=center;verticalAlign=top;align=center;imageAspect=0;fontSize=10;image=https://cdn.simpleicons.org/apacheairflow/017CEE;" value="Airflow&#xa;(orchestration)" vertex="1">
+      <mxGeometry height="56" width="56" x="252" y="120" as="geometry" />
+    </mxCell>
+    <mxCell id="A3" parent="1" style="shape=image;html=1;verticalLabelPosition=bottom;labelPosition=center;verticalAlign=top;align=center;imageAspect=0;fontSize=10;image=https://cdn.simpleicons.org/python/3776AB;" value="ETL + Features&#xa;Elo·form·rest·H2H" vertex="1">
+      <mxGeometry height="56" width="56" x="380" y="120" as="geometry" />
+    </mxCell>
+    <mxCell id="A4" parent="1" style="shape=image;html=1;verticalLabelPosition=bottom;labelPosition=center;verticalAlign=top;align=center;imageAspect=0;fontSize=10;image=https://cdn.simpleicons.org/postgresql/4169E1;" value="PostgreSQL&#xa;warehouse" vertex="1">
+      <mxGeometry height="56" width="56" x="484" y="120" as="geometry" />
+    </mxCell>
+    <mxCell id="A5" parent="1" style="shape=image;html=1;verticalLabelPosition=bottom;labelPosition=center;verticalAlign=top;align=center;imageAspect=0;fontSize=10;image=https://cdn.simpleicons.org/mlflow/0194E2;" value="MLflow&#xa;tracking" vertex="1">
+      <mxGeometry height="56" width="56" x="790" y="176" as="geometry" />
+    </mxCell>
+    <mxCell id="A6" parent="1" style="shape=image;html=1;verticalLabelPosition=bottom;labelPosition=center;verticalAlign=top;align=center;imageAspect=0;fontSize=10;image=https://cdn.simpleicons.org/scikitlearn/F7931E;" value="Models&#xa;Dixon-Coles · Elo · Logistic · XGBoost" vertex="1">
+      <mxGeometry height="56" width="56" x="620" y="176" as="geometry" />
+    </mxCell>
+    <mxCell id="A7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="Monte Carlo&#xa;10k sims → odds" vertex="1">
+      <mxGeometry height="48" width="120" x="220" y="230" as="geometry" />
+    </mxCell>
+    <mxCell id="A8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" value="Snapshot&#xa;SQLite + model" vertex="1">
+      <mxGeometry height="48" width="120" x="620" y="278" as="geometry" />
+    </mxCell>
+    <mxCell id="ZB" parent="1" style="rounded=1;dashed=1;html=1;fillColor=none;strokeColor=#82b366;verticalAlign=top;fontStyle=1;fontSize=12;" value="2 · SERVING a fully containerized app" vertex="1">
+      <mxGeometry height="190" width="400" x="40" y="360" as="geometry" />
+    </mxCell>
+    <mxCell id="B3" parent="1" style="shape=image;html=1;verticalLabelPosition=bottom;labelPosition=center;verticalAlign=top;align=center;imageAspect=0;fontSize=10;image=https://cdn.simpleicons.org/docker/2496ED;" value="Docker&#xa;app image" vertex="1">
+      <mxGeometry height="60" width="60" x="110" y="420" as="geometry" />
+    </mxCell>
+    <mxCell id="B4" parent="1" style="shape=image;html=1;verticalLabelPosition=bottom;labelPosition=center;verticalAlign=top;align=center;imageAspect=0;fontSize=10;image=https://cdn.simpleicons.org/fastapi/009688;" value="FastAPI&#xa;prediction API" vertex="1">
+      <mxGeometry height="52" width="52" x="310" y="389" as="geometry" />
+    </mxCell>
+    <mxCell id="B5" parent="1" style="shape=image;html=1;verticalLabelPosition=bottom;labelPosition=center;verticalAlign=top;align=center;imageAspect=0;fontSize=10;image=https://cdn.simpleicons.org/streamlit/FF4B4B;" value="Streamlit&#xa;dashboard" vertex="1">
+      <mxGeometry height="52" width="52" x="310" y="459" as="geometry" />
+    </mxCell>
+    <mxCell id="ZC" parent="1" style="rounded=1;dashed=1;html=1;fillColor=none;strokeColor=#999999;verticalAlign=top;fontStyle=1;fontSize=12;" value="3 · CI/CD" vertex="1">
+      <mxGeometry height="190" width="400" x="470" y="360" as="geometry" />
+    </mxCell>
+    <mxCell id="C1" parent="1" style="shape=image;html=1;verticalLabelPosition=bottom;labelPosition=center;verticalAlign=top;align=center;imageAspect=0;fontSize=10;image=https://cdn.simpleicons.org/githubactions/2088FF;" value="GitHub Actions&#xa;lint · test · build image" vertex="1">
+      <mxGeometry height="56" width="56" x="642" y="410" as="geometry" />
+    </mxCell>
+    <mxCell id="ea0" edge="1" parent="1" source="A1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="A2">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="ea0b" edge="1" parent="1" source="A1b" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="A2">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="ea2" edge="1" parent="1" source="A2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="A3">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="ea3" edge="1" parent="1" source="A3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="A4">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="ea4" edge="1" parent="1" source="A4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="A6">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="ea5" edge="1" parent="1" source="A6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;dashed=1;" target="A5">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="ea6" edge="1" parent="1" source="A6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="A7">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="ea7" edge="1" parent="1" source="A7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="A8">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="eb3" edge="1" parent="1" source="B3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="B4">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="eb4" edge="1" parent="1" source="B3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="B5">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="ex1" edge="1" parent="1" source="A8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;dashed=1;fontSize=9;" target="B3" value="bundled in image">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="ex2" edge="1" parent="1" source="C1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;dashed=1;fontSize=9;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="B3" value="builds image">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="670" y="570" />
+          <mxPoint x="140" y="570" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+  </root>
+</mxGraphModel>

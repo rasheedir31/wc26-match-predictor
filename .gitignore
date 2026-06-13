@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.Python
+
+# Virtual environments / uv
+.venv/
+venv/
+.uv/
+
+# Test / coverage / caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Data - raw sources are reproduced by the pipeline, never committed
+data/raw/
+data/interim/
+data/processed/
+*.parquet
+
+# MLflow experiment tracking (local store)
+mlruns/
+mlartifacts/
+
+# Serialized models are transient everywhere EXCEPT the committed app snapshot,
+# which ships with the deployable image (refreshed by the scheduled pipeline).
+*.pkl
+*.joblib
+!data/snapshot/**
+
+# Evidently / monitoring reports
+reports/
+
+# Airflow local runtime
+airflow/logs/
+airflow.db
+airflow.cfg
+webserver_config.py
+standalone_admin_password.txt
+
+# Environment / secrets
+.env
+.env.local
+*.local
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Local-only notes and scratch (not for GitHub)
+assets/
